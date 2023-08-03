@@ -2,18 +2,28 @@ version: '3'
 
 services:
   web:
-    container_name: web_container
+    container_name: login_php_web
     build: 
       context: ./web
       dockerfile: Dockerfile
     environment:
-      Z: "Asia/Tokyo"
+      TZ: "Asia/Tokyo"
     ports:
         - "8084:80"
     volumes:
       - type: bind
         source: ./app
         target: /var/www/html
+  
+  db:
+    container_name: login_php_db
+    build:
+      context: ./db
+      dockerfile: Dockerfile
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: pgsql
 
 # networks:
 
