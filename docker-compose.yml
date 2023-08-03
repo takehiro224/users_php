@@ -38,6 +38,17 @@ services:
         source: ./db/init
         target: /docker-entrypoint-initdb.d
 
+  dbms:
+    container_name: login_php_dbms
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: root@autobacs.com
+      PGADMIN_DEFAULT_PASSWORD: password
+    ports:
+       - "5051:80"
+    networks:
+      - login_php_network
+
 
 networks:
   login_php_network:
