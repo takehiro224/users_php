@@ -26,10 +26,22 @@ services:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: root
       POSTGRES_DB: pgsql
+    ports:
+      - "5434:5432"
     networks:
       - login_php_network
+    volumes:
+      - type: volume
+        source: login_php_db_volume
+        target: /var/lib/postgresql/data
+      - type: bind
+        source: ./db/init
+        target: /docker-entrypoint-initdb.d
+
 
 networks:
   login_php_network:
 
-# volumes:
+volumes:
+  login_php_db_volume:
+    driver: local
