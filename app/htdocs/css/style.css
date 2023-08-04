@@ -1,0 +1,9 @@
+.fl {
+    float: left;
+}
+
+#login_main {
+    margin: 0 auto;
+    width: 60%;
+    padding: 20px;
+}
