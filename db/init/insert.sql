@@ -109,7 +109,7 @@ INSERT INTO users VALUES ('100098', '園田　風奈穂', 'ソノダ　カナホ
 INSERT INTO users VALUES ('100099', '江田　冬香', 'エダ　トウカ', '1998/8/13', '女性', 'システム開発1部', '一般', '2020/4/1', '0189066087', '100099@example.co.jp', NOW(), NOW());
 INSERT INTO users VALUES ('100100', '町田　俊範', 'マチダ　トシノリ', '1998/8/31', '男性', 'システム開発4部', '一般', '2020/4/1', '0246212838', '100100@example.co.jp', NOW(), NOW());
 
-INSERT INTO login_accounts VALUES (1, 'admin', '$2y$10$nYG/BymkZz/W8hybdu1SZ.PiSx/GkW38H6pdDLIztX3mDnKR3GeS2', 'テストユーザー1', NOW(), NOW());
+INSERT INTO login_accounts VALUES (1, 'admin', 'password', 'アドミン', NOW(), NOW());
 INSERT INTO login_accounts VALUES (2, 'root', '$2y$10$qgzrf3fMbs.Ym2Wr5M8vHOjwtC5hlv482Rf/tpnguEfhZZ71nw7fK', 'テストユーザー2', NOW(), NOW());
 
 COMMIT;
