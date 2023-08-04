@@ -3,15 +3,15 @@
 
 <div id="login_main">
     <h3 id="title">ログイン画面</h3>
-    <?php if($message === "") { ?>
-        <p><?php echo $message?></p>
+    <?php if($errorMessage === "") { ?>
+        <p><?php echo $errorMessage?></p>
     <?php } ?>
     <div class="text_center">
         <form action="login.php" method="POST">
             <div id="login_area">
                 <div class="mb20">
                     <span>ログインID</span>
-                    <input type="password" name="password" value="" />
+                    <input type="text" name="login_id" value="" />
                 </div>
                 <div class="mb20">
                     <span>パスワード</span>

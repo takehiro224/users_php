@@ -22,7 +22,8 @@ class Database
              * 2. DBユーザー名 
              * 3. DBパスワード
             */
-            $dsnBase = "%s:host=%s;dbname=%s;charset=utf8";
+            // $dsnBase = "%s:host=%s;dbname=%s;charset=utf8";
+            $dsnBase = "%s:host=%s;dbname=%s;"; // PostgreSQLではcharsetは不要
             $dsn = sprintf($dsnBase, DB_KIND, DB_HOST, DB_NAME);
             self::$pdo = new PDO($dsn, DB_USER, DB_PASS);
         }
