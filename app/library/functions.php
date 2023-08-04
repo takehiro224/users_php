@@ -11,6 +11,7 @@ function isPostMethod(): bool
 
 /**
  * 強制リダイレクト
+ * 画面遷移で利用する
  *
  * @param string $url
  * @return void
