@@ -1,5 +1,22 @@
+.clearfix::after {
+    content: " ";
+    display: block;
+    clear: both;
+}
+
 .fl {
     float: left;
+}
+
+.text_center {
+    text-align: center;
+}
+
+#header h1 {
+    margin: 0;
+    background: #333;
+    color: #fff;
+    padding: 10px;
 }
 
 #login_main {
@@ -7,3 +24,17 @@
     width: 60%;
     padding: 20px;
 }
+
+#login_area {
+    border: 1px solid #333;
+    padding: 20px;
+  }
+  
+
+#title {
+    background: #8ea9db;
+    font-weight: bold;
+    padding: 10px;
+    margin: 0 0 10px 0;
+    border: 1px solid #333;
+ }

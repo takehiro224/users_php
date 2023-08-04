@@ -9,15 +9,19 @@
     <div class="text_center">
         <form action="login.php" method="POST">
             <div id="login_area">
-                <span>ログインID</span>
-                <input type="password" name="password" value="" />
-            </div>
-            <div>
-                <span>パスワード</span>
-                <input type="password" name="password" value="" />
-            </div>
-            <div class="text_center">
-                <input type="submit" id="login_button" value="ログイン">
+                <div class="mb20">
+                    <span>ログインID</span>
+                    <input type="password" name="password" value="" />
+                </div>
+                <div class="mb20">
+                    <span>パスワード</span>
+                    <input type="password" name="password" value="" />
+                </div>
+                <div>
+                    <div class="text_center">
+                        <input type="submit" id="login_button" value="ログイン">
+                    </div>
+                </div>
             </div>
         </form>
     </div>

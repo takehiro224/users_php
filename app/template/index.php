@@ -18,7 +18,8 @@
     <div id="login_main">
         <h3 id="title">TOP画面</h3>
         <form action="index.php" method="post">
-            <button type="submit">Sing in</button>
+            <input type="submit" value="Sign in">
+            <input type="submit" value="Sign up">
         </form>
     </div>
 <?php require_once("footer.php"); ?>
