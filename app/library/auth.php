@@ -38,6 +38,7 @@ class Auth {
         // if($result === false) { // IDに紐づくパスワードが一致しなかったためにfalse
         //     return false;
         // }
+
         Session::regenerate();
         Session::set("id", $account["id"]);
         Session::set("login_id", $account["login_id"]);
@@ -47,5 +48,4 @@ class Auth {
     }
 
 }
-
 ?>
