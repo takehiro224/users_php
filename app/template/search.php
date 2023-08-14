@@ -1,7 +1,7 @@
 <?php declare(strict_types=1); ?>
 <?php require_once(TEMPLATE_DIR . "header.php"); ?>
-
 <div class="clearfix">
+    <?php require_once(TEMPLATE_DIR . "menu.php"); ?>
     <div id="main">
         <h3 id="title">社員検索画面</h3>
         <div id="search_area">
@@ -53,7 +53,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php if ($count >= 1) { ?>
+                    <!-- <?php if ($count >= 1) { ?>
                         <?php foreach ($data as $row) { ?>
                             <tr>
                                 <td><?php echo htmlspecialchars($row[["id"]]); ?></td>
@@ -70,7 +70,7 @@
                                 </td> 
                             </tr>
                         <?php } ?>
-                    <?php } ?>
+                    <?php } ?> -->
                 </tbody>
             </table>
         </div>
