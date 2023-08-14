@@ -6,3 +6,25 @@ postgres: PostgreSQLの実行ファイルを指定しています。このコマ
 -c log_statement=all: 実行されたSQLステートメントをログに記録する設定です。all はすべてのSQLステートメントをログに記録することを意味します。
 -c log_connections=on: データベースへの接続をログに記録する設定です。on は接続のログ記録を有効にすることを意味します。
 -c log_disconnections=on: データベースからの切断をログに記録する設定です。on は切断のログ記録を有効にすることを意味します。
+
+## memo
+### パターン1
+フロントエンド: PHP
+バックエンド: PHP
+DB: PostgreSQL
+Web: Apache
+その他: Docker
+
+### パターン2
+フロントエンド: PHP(Blade)
+バックエンド: PHP
+DB: PostgreSQL
+Web: Apache
+その他: Docker, Laravel
+
+### パターン3
+フロントエンド: ReactJS
+バックエンド: Go
+DB: MySQL
+Web: Nginx
+その他: Docker
