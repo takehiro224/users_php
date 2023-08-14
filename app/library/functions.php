@@ -10,6 +10,16 @@ function isPostMethod(): bool
 }
 
 /**
+ * GET通信判定
+ *
+ * @return boolean true:GET通信／false:GET通信以外
+ */
+function isGetMethod(): bool
+{
+    return mb_strtolower($_SERVER['REQUEST_METHOD']) === 'get';
+}
+
+/**
  * 強制リダイレクト
  * 画面遷移で利用する
  *
