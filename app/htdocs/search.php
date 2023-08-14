@@ -33,13 +33,13 @@ if(isGetMethod()) {
     $nameKana = $_GET['name_kana'] ?? '';
     $gender = $_GET['gender'] ?? '';
 
-    // TODO: 件数取得SQLの実行
-    
-    
+    // 件数取得SQLの実行
+    $count = Users::searchCount($id, $nameKana, $gender);
+
+    // 社員情報取得SQLの実行   
+    $data = Users::searchData($id, $nameKana, $gender);
 }
 
-
-// TODO: 社員情報取得SQLの実行
 
 // search画面を読込
 require_once(TEMPLATE_DIR . "search.php");

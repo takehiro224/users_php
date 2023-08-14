@@ -84,9 +84,9 @@ class Users
      * @param string $id 社員番号
      * @param string $nameKana 氏名カナ
      * @param string $gender 性別
-     * @return string 社員件数
+     * @return int 社員件数
      */
-    public static function searchCount(string $id, string $nameKana, string $gender): string
+    public static function searchCount(string $id, string $nameKana, string $gender): int
     {
         list($whereSql, $param) = self::getSearchWhereSqlAndParam($id, $nameKana, $gender);
         $sql = "SELECT COUNT(*) AS count FROM users WHERE 1 = 1 {$whereSql}";

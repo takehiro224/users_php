@@ -35,7 +35,7 @@
         </div>
 
         <div id="page_area">
-            <div id="page_count">件ヒットしました</div>
+            <div id="page_count"><?php echo htmlspecialchars((string)$count); ?>件ヒットしました</div>
         </div>
 
         <div id="search_result">
@@ -53,24 +53,24 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- <?php if ($count >= 1) { ?>
+                    <?php if ($count >= 1) { ?>
                         <?php foreach ($data as $row) { ?>
                             <tr>
-                                <td><?php echo htmlspecialchars($row[["id"]]); ?></td>
-                                <td><?php echo htmlspecialchars($row[["name"]]); ?></td>
-                                <td><?php echo htmlspecialchars($row[["name_kana"]]); ?></td>
-                                <td><?php echo htmlspecialchars($row[["gender"]]); ?></td>
-                                <td><?php echo htmlspecialchars($row[["organization"]]); ?></td>
-                                <td><?php echo htmlspecialchars($row[["post"]]); ?></td>
-                                <td><?php echo htmlspecialchars($row[["tel"]]); ?></td>
-                                <td><?php echo htmlspecialchars($row[["mail_address"]]); ?></td>
+                                <td><?php echo htmlspecialchars($row["id"]); ?></td>
+                                <td><?php echo htmlspecialchars($row["name"]); ?></td>
+                                <td><?php echo htmlspecialchars($row["name_kana"]); ?></td>
+                                <td><?php echo htmlspecialchars($row["gender"]); ?></td>
+                                <td><?php echo htmlspecialchars($row["organization"]); ?></td>
+                                <td><?php echo htmlspecialchars($row["post"]); ?></td>
+                                <td><?php echo htmlspecialchars($row["tel"]); ?></td>
+                                <td><?php echo htmlspecialchars($row["mail_address"]); ?></td>
                                 <td class="button_area">
                                     <button class="edit_button" onclick="editUser('<?php echo htmlspecialchars($row["id"]); ?>');">編集</button>
                                     <button class="delete_button" onclick="deleteUser('<?php echo htmlspecialchars($row["id"]); ?>');">削除</button>
                                 </td> 
                             </tr>
                         <?php } ?>
-                    <?php } ?> -->
+                    <?php } ?>
                 </tbody>
             </table>
         </div>
