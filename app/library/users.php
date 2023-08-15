@@ -108,4 +108,134 @@ class Users
         $sql = "SELECT * FROM users WHERE 1 = 1 {$whereSql} ORDER BY id";
         return Database::fetchAll($sql, $param);
     }
+
+    /**
+     * 社員情報を登録する
+     *
+     * @param string $id 社員番号
+     * @param string $name 氏名
+     * @param string $nameKana 氏名カナ
+     * @param string $birthday 誕生日
+     * @param string $gender 性別
+     * @param string $organization 部署
+     * @param string $post 役職
+     * @param string $startDate 入社年月日
+     * @param string $tel 電話番号
+     * @param string $mailAddress メールアドレス
+     * @return bool SQL実行結果
+     */
+    public static function insert(
+        string $id,
+        string $name,
+        string $nameKana,
+        string $birthday,
+        string $gender,
+        string $organization,
+        string $post,
+        string $startDate,
+        string $tel,
+        string $mailAddress
+    ): bool
+    {
+        // SQLを作成
+        $sql  = "INSERT INTO users ( ";
+        $sql .= "  id, ";
+        $sql .= "  name, ";
+        $sql .= "  name_kana, ";
+        $sql .= "  birthday, ";
+        $sql .= "  gender, ";
+        $sql .= "  organization, ";
+        $sql .= "  post, ";
+        $sql .= "  start_date, ";
+        $sql .= "  tel, ";
+        $sql .= "  mail_address, ";
+        $sql .= "  created, ";
+        $sql .= "  updated ";
+        $sql .= ") VALUES (";
+        $sql .= "  :id, ";
+        $sql .= "  :name, ";
+        $sql .= "  :name_kana, ";
+        $sql .= "  :birthday, ";
+        $sql .= "  :gender, ";
+        $sql .= "  :organization, ";
+        $sql .= "  :post, ";
+        $sql .= "  :start_date, ";
+        $sql .= "  :tel, ";
+        $sql .= "  :mail_address, ";
+        $sql .= "  NOW(), "; //作成日時
+        $sql .= "  NOW() ";  //更新日時
+        $sql .= ")";
+
+        // パラメータを格納
+        $param = [
+            "id" => $id,
+            "name" => $name,
+            "name_kana" => $nameKana,
+            "birthday" => $birthday,
+            "gender" => $gender,
+            "organization" => $organization,
+            "post" => $post,
+            "start_date" => $startDate,
+            "tel" => $tel,
+            "mail_address" => $mailAddress,
+        ];
+
+        // SQLを実行し結果を返却
+        return DataBase::execute($sql, $param);
+    }
+
+    /**
+     * 社員情報を更新する
+     *
+     * @param string $id 社員番号
+     * @param string $name 氏名
+     * @param string $nameKana 氏名カナ
+     * @param string $birthday 誕生日
+     * @param string $gender 性別
+     * @param string $organization 部署
+     * @param string $post 役職
+     * @param string $startDate 入社年月日
+     * @param string $tel 電話番号
+     * @param string $mailAddress メールアドレス
+     * @return bool SQL実行結果
+     */
+    public static function update(
+        string $id,
+        string $name,
+        string $nameKana,
+        string $birthday,
+        string $gender,
+        string $organization,
+        string $post,
+        string $startDate,
+        string $tel,
+        string $mailAddress
+    ): bool {
+        $sql  = "UPDATE users ";
+        $sql .= "SET name = :name, ";
+        $sql .= "  name_kana = :name_kana, ";
+        $sql .= "  birthday = :birthday, ";
+        $sql .= "  gender = :gender, ";
+        $sql .= "  organization = :organization, ";
+        $sql .= "  post = :post, ";
+        $sql .= "  start_date = :start_date, ";
+        $sql .= "  tel = :tel, ";
+        $sql .= "  mail_address = :mail_address, ";
+        $sql .= "  updated = NOW() "; //更新日時
+        $sql .= "WHERE id = :id ";
+
+        $param = [
+            "id" => $id,
+            "name" => $name,
+            "name_kana" => $nameKana,
+            "birthday" => $birthday,
+            "gender" => $gender,
+            "organization" => $organization,
+            "post" => $post,
+            "start_date" => $startDate,
+            "tel" => $tel,
+            "mail_address" => $mailAddress,
+        ];
+        return DataBase::execute($sql, $param);
+    }
 }
