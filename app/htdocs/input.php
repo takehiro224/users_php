@@ -258,8 +258,8 @@ if (isPostMethod()) {
         $title = "エラー";
         $errorMessage = $e->getMessage();
         // TODO: エラー画面表示 
-        // require_once(TEMPLATE_DIR . "error.php");
-        // exit; //処理終了
+        require_once(TEMPLATE_DIR . "error.php");
+        exit; //処理終了
     }
 
 }
