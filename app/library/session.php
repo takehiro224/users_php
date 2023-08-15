@@ -49,7 +49,9 @@ class Session {
      */
     public static function destroy(): void
     {
+        // セッション変数の削除
         $_SESSION = [];
+        
         session_destroy();
     }
 

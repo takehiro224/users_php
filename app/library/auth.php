@@ -34,17 +34,42 @@ class Auth {
             // DBに指定のIDのデータがないためにfalse
             return false;
         }
-        // $result = password_verify($password, $account["password"]);
-        // if($result === false) { // IDに紐づくパスワードが一致しなかったためにfalse
-        //     return false;
-        // }
+        $result = password_verify($password, $account["password"]);
+        if($result === false) { // IDに紐づくパスワードが一致しなかったためにfalse
+            return false;
+        }
 
+        // セッションID発行
         Session::regenerate();
+        // セッションファイルへ情報登録
         Session::set("id", $account["id"]);
         Session::set("login_id", $account["login_id"]);
         Session::set("name", $account["name"]);
         // ログイン成功
         return true;
+    }
+
+    /**
+     * ログアウト処理
+     *
+     * @return void
+     */
+    public static function logout(): void
+    {
+        Session::destroy();
+        // クッキーの削除(setcookie: クッキーを送信する)
+        setcookie("PHPSESSID", "", time() - 1800, "/");
+        Session::start();
+    }
+
+    /**
+     * ログイン判定
+     *
+     * @return boolean true: ログイン済み
+     */
+    public static function isLoggedIn(): bool
+    {
+        return !is_null(Session::get("id"));
     }
 
 }
