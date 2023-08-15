@@ -16,6 +16,7 @@ require_once(LIBRARY_DIR . "auth.php");
 require_once(LIBRARY_DIR . "database.php");
 require_once(LIBRARY_DIR . "session.php");
 require_once(LIBRARY_DIR . "users.php");
+require_once(LIBRARY_DIR . "validate.php");
 
 Session::start();
 ?>
