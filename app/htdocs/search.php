@@ -9,6 +9,8 @@ if(!Auth::isLoggedIn()) {
     redirect("login.php");
 }
 
+writeLog("【表示】検索画面");
+
 $errorMessage = '';
 $successMessage = "";
 
@@ -30,6 +32,7 @@ if(isPostMethod()) {
     // 削除処理
     $isDelete = (isset($_POST['delete']) && $_POST['delete'] === '1') ? true : false;
     if($isDelete) {
+        writeLog("【開始】社員情報削除");
         try {
             // throw new Exception("エラーサンプル");
             if (!validateRequired($deleteId)) { //空白でないか
@@ -49,10 +52,12 @@ if(isPostMethod()) {
             DataBase::commit();
     
             $successMessage = "削除完了しました。";
+            writeLog("【終了】社員情報削除");
 
         } catch (Exception $e) {
             $errorMessage = $e->getMessage() . '<br>';
             $title = "エラー";
+            writeLog("【エラー】社員情報削除");
         } finally {
             // 件数取得SQLの実行
             $count = Users::searchCount('', '', '');
@@ -66,6 +71,7 @@ if(isPostMethod()) {
 // GET送信判定
 if(isGetMethod()) {
     // 「検索ボタン」タップ時の処理
+    writeLog("【開始】社員情報検索");
     $id = $_GET['id'] ?? '';
     $nameKana = $_GET['name_kana'] ?? '';
     $gender = $_GET['gender'] ?? '';
@@ -75,6 +81,7 @@ if(isGetMethod()) {
 
     // 社員情報取得SQLの実行   
     $data = Users::searchData($id, $nameKana, $gender);
+    writeLog("【終了】社員情報検索");
 }
 
 

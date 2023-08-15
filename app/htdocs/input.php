@@ -8,6 +8,8 @@ if(!Auth::isLoggedIn()) {
     redirect("login.php");
 }
 
+writeLog("【表示】登録画面");
+
 $title = "社員登録";
 
 $id = '';
@@ -54,6 +56,7 @@ if (isPostMethod()) {
     try {
 
         if($isEdit && $isSave) { // C. (編集登録)「input.php画面」で「登録」ボタン
+            writeLog("【開始】社員情報更新");
             // 「社員番号」が空白でないか => ABC
             if (!validateRequired($id)) {
                 throw new Exception("エラーが発生しました。もう一度やり直してください。");
@@ -141,6 +144,7 @@ if (isPostMethod()) {
             );
 
             $successMessage = "更新完了しました。";
+            writeLog("【終了】社員情報更新");
 
         } elseif($isEdit) { // A. (編集表示)「search.php画面」で「編集」ボタン
             // 「社員番号」が空白でないか => ABC
@@ -170,6 +174,7 @@ if (isPostMethod()) {
             $mailAddress = $user['mail_address'];
 
         } elseif($isSave) { // B. (新規登録)「input.php画面」で「登録」ボタン
+            writeLog("【開始】社員情報新規登録");
             // 「社員番号」が空白でないか => ABC
             if (!validateRequired($id)) {
                 throw new Exception("エラーが発生しました。もう一度やり直してください。");
@@ -256,6 +261,7 @@ if (isPostMethod()) {
             );
             
             $successMessage = "登録完了しました。";
+            writeLog("【終了】社員情報新規登録");
         }
         
     } catch (Exception $e) {
