@@ -66,7 +66,7 @@ class Users
         }
         // 検索条件に社員名カナが入力されている場合はSQLの条件式に社員名カナを追加
         if($nameKana !== '') {
-            $whereSql .= 'AND name_kana = :name_kana ';
+            $whereSql .= 'AND name_kana LIKE :name_kana ';
             $param['name_kana'] = $nameKana . '%';
         }
         // 検索条件に性別が入力されている場合はSQLの条件式に性別を追加

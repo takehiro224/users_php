@@ -60,72 +60,72 @@ if (isPostMethod()) {
             }
             // 「社員番号」が6桁か => ABC
             if (!validateId($id)) {
-                $errorMessage .= 'エラーが発生しました。もう一度やり直してください。<br>';
+                throw new Exception("エラーが発生しました。もう一度やり直してください。");
             }
             // 「社員番号」が存在するか => AC
             if (!Users::isExists($id)) {
-                $errorMessage .= 'エラーが発生しました。もう一度やり直してください。<br>';
+                throw new Exception("エラーが発生しました。もう一度やり直してください。");
             }
             // 「社員名」が空白でないか
             if (!validateRequired($name)) { //空白でないか
-                $errorMessage .= '社員名を入力してください。<br>';
+                throw new Exception("社員名を入力してください。");
             }
             // 「社員名」が50文字以内か => BC
             if (!validateMaxLength($name, 50)) { //50文字以内か
-                $errorMessage .= '社員名は50文字以内で入力してください。<br>';
+                throw new Exception("社員名は50文字以内で入力してください。");
             }
             // 「社員名カナ」が空白でないか => BC
             if (!validateRequired($nameKana)) { //空白でないか
-                $errorMessage .= '社員名カナを入力してください。<br>';
+                throw new Exception("社員名カナを入力してください。");
             }
             // 「社員名カナ」が50文字以内か => BC
             if (!validateMaxLength($nameKana, 50)) { //50文字以内か
-                $errorMessage .= '社員名カナは50文字以内で入力してください。<br>';
+                throw new Exception("社員名カナは50文字以内で入力してください。");
             }
             // 「生年月日」が空白でないか => BC
             if (!validateRequired($birthday)) { //空白でないか
-                $errorMessage .= '生年月日を入力してください。<br>';
+                throw new Exception("生年月日を入力してください。");
             }
             if (!validateDate($birthday)) {
-                $errorMessage .= '生年月日を正しく入力してください。<br>';
+                throw new Exception("生年月日を正しく入力してください。");
             }
             // 「性別」が男性or女性か => BC
-            if (!validateGender($gender)) {
-                $errorMessage .= '性別を選択してください。<br>';
+            if (!validateGender($gender)) {                
+                throw new Exception("性別を選択してください。");
             }
             // 「部署」が選択肢に合致するか => BC
             if (!validateOrganization($organization)) {
-                $errorMessage .= '部署を選択してください。<br>';
+                throw new Exception("部署を選択してください。");
             }
             // 「役職」が選択肢に合致するか => BC
             if (!validatePost($post)) {
-                $errorMessage .= '役職を選択してください。<br>';
+                throw new Exception("役職を選択してください。");
             }
             // 「入社年月日」が空白でないか => BC
             if (!validateRequired($startDate)) { //空白でないか
-                $errorMessage .= '入社年月日を入力してください。<br>';
+                throw new Exception("入社年月日を入力してください。");
             }
             // 「入社年月日」が正しい日付か => BC
             if (!validateDate($startDate)) {
-                $errorMessage .= '入社年月日を正しく入力してください。<br>';
+                throw new Exception("入社年月日を正しく入力してください。");
             }
             // 「電話番号」が空白でないか => BC
             if (!validateRequired($tel)) { //空白でないか
-                $errorMessage .= '電話番号を入力してください。<br>';
+                throw new Exception("電話番号を入力してください。");
             }
             // 「電話番号」が15桁の数値か => BC
             if (!validateTel($tel)) { //15桁以内の数値か
-                $errorMessage .= '電話番号は15桁以内の数値で入力してください。<br>';
+                throw new Exception("電話番号は15桁以内の数値で入力してください。");
             }
             // 「メールアドレス」が空白でないか => BC
             if (!validateRequired($mailAddress)) { //空白でないか
-                $errorMessage .= 'メールアドレスを入力してください。<br>';
+                throw new Exception("メールアドレスを入力してください。");
             }
             // 「メールアドレス」の形式が正しいか => BC
             if (!validateMailAddress($mailAddress)) { //メールアドレス形式か
-                $errorMessage .= 'メールアドレスを正しく入力してください。<br>';
+                throw new Exception("メールアドレスを正しく入力してください。");
             }
-
+            
             // 更新処理 => C
             Users::update(
                 $id,
@@ -140,6 +140,8 @@ if (isPostMethod()) {
                 $mailAddress,
             );
 
+            $successMessage = "更新完了しました。";
+
         } elseif($isEdit) { // A. (編集表示)「search.php画面」で「編集」ボタン
             // 「社員番号」が空白でないか => ABC
             if (!validateRequired($id)) {
@@ -147,12 +149,12 @@ if (isPostMethod()) {
                 throw new Exception("ユーザー情報を取得できませんでした");
             }
             // 「社員番号」が6桁か => ABC
-            if (!validateId($id)) {
-                $errorMessage .= 'ユーザー情報が不正';
+            if (!validateId($id)) {            
+                throw new Exception("ユーザー情報が不正");
             }
             // 「社員番号」が存在するか => AC
             if (!Users::isExists($id)) {
-                $errorMessage .= 'ユーザー情報が存在しません';
+                throw new Exception("ユーザー情報が存在しません");
             }
             // 社員情報取得
             $user = Users::getById($id);
@@ -170,74 +172,74 @@ if (isPostMethod()) {
         } elseif($isSave) { // B. (新規登録)「input.php画面」で「登録」ボタン
             // 「社員番号」が空白でないか => ABC
             if (!validateRequired($id)) {
-                $errorMessage .= 'エラーが発生しました。もう一度やり直してください。<br>';
+                throw new Exception("エラーが発生しました。もう一度やり直してください。");
             }
             // 「社員番号」が6桁か => ABC
             if (!validateId($id)) {
-                $errorMessage .= 'エラーが発生しました。もう一度やり直してください。<br>';
+                throw new Exception("エラーが発生しました。もう一度やり直してください。");
             }
             // 「社員番号」が存在しないか
             if (Users::isExists($id)) {
-                $errorMessage .= '登録不可のIDです';
+                throw new Exception("登録不可のIDです");
             }
             // 「社員名」が空白でないか
             if (!validateRequired($name)) { //空白でないか
-                $errorMessage .= '社員名を入力してください。<br>';
+                throw new Exception("社員名を入力してください。");
             }
             // 「社員名」が50文字以内か => BC
             if (!validateMaxLength($name, 50)) { //50文字以内か
-                $errorMessage .= '社員名は50文字以内で入力してください。<br>';
+                throw new Exception("社員名は50文字以内で入力してください。");
             }
             // 「社員名カナ」が空白でないか => BC
             if (!validateRequired($nameKana)) { //空白でないか
-                $errorMessage .= '社員名カナを入力してください。<br>';
+                throw new Exception("社員名カナを入力してください。");
             }
             // 「社員名カナ」が50文字以内か => BC
             if (!validateMaxLength($nameKana, 50)) { //50文字以内か
-                $errorMessage .= '社員名カナは50文字以内で入力してください。<br>';
+                throw new Exception("社員名カナは50文字以内で入力してください。");
             }
             // 「生年月日」が空白でないか => BC
             if (!validateRequired($birthday)) { //空白でないか
-                $errorMessage .= '生年月日を入力してください。<br>';
+                throw new Exception("生年月日を入力してください。");
             }
             if (!validateDate($birthday)) {
-                $errorMessage .= '生年月日を正しく入力してください。<br>';
+                throw new Exception("生年月日を正しく入力してください。");
             }
             // 「性別」が男性or女性か => BC
             if (!validateGender($gender)) {
-                $errorMessage .= '性別を選択してください。<br>';
+                throw new Exception("性別を選択してください。");
             }
             // 「部署」が選択肢に合致するか => BC
             if (!validateOrganization($organization)) {
-                $errorMessage .= '部署を選択してください。<br>';
+                throw new Exception("部署を選択してください。");
             }
             // 「役職」が選択肢に合致するか => BC
             if (!validatePost($post)) {
-                $errorMessage .= '役職を選択してください。<br>';
+                throw new Exception("役職を選択してください。");
             }
             // 「入社年月日」が空白でないか => BC
             if (!validateRequired($startDate)) { //空白でないか
-                $errorMessage .= '入社年月日を入力してください。<br>';
+                throw new Exception("入社年月日を入力してください。");
             }
             // 「入社年月日」が正しい日付か => BC
             if (!validateDate($startDate)) {
-                $errorMessage .= '入社年月日を正しく入力してください。<br>';
+                throw new Exception("入社年月日を正しく入力してください。");
             }
             // 「電話番号」が空白でないか => BC
             if (!validateRequired($tel)) { //空白でないか
-                $errorMessage .= '電話番号を入力してください。<br>';
+                throw new Exception("電話番号を入力してください。");
             }
             // 「電話番号」が15桁の数値か => BC
             if (!validateTel($tel)) { //15桁以内の数値か
-                $errorMessage .= '電話番号は15桁以内の数値で入力してください。<br>';
+                throw new Exception("電話番号は15桁以内の数値で入力してください。");
             }
             // 「メールアドレス」が空白でないか => BC
             if (!validateRequired($mailAddress)) { //空白でないか
-                $errorMessage .= 'メールアドレスを入力してください。<br>';
+                throw new Exception("メールアドレスを入力してください。");
             }
             // 「メールアドレス」の形式が正しいか => BC
             if (!validateMailAddress($mailAddress)) { //メールアドレス形式か
-                $errorMessage .= 'メールアドレスを正しく入力してください。<br>';
+                throw new Exception("メールアドレスを正しく入力してください。");
             }
             // 登録処理 => B
             Users::insert(
@@ -253,11 +255,13 @@ if (isPostMethod()) {
                 $mailAddress,
             );
             
+            $successMessage = "登録完了しました。";
         }
+        
     } catch (Exception $e) {
         $title = "エラー";
-        $errorMessage = $e->getMessage();
-        // TODO: エラー画面表示 
+        $errorMessage = $e->getMessage() . "<br>";
+        // エラー画面表示 
         require_once(TEMPLATE_DIR . "error.php");
         exit; //処理終了
     }

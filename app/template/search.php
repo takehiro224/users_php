@@ -52,12 +52,12 @@
                     <tr>
                         <th>社員番号</th>
                         <th>社員名</th>
+                        <th>社員名カナ</th>
                         <th>性別</th>
                         <th>部署</th>
                         <th>役職</th>
                         <th>電話番号</th>
                         <th>メールアドレス</th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
