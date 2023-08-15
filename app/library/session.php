@@ -25,7 +25,7 @@ class Session {
     {
         $value = null;
         if(isset($_SESSION[$key])) {
-            $value = $_SERVER[$key];
+            $value = $_SESSION[$key];
         }
         return $value;
     }
