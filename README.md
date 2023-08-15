@@ -1,3 +1,9 @@
+admin / admin_pass
+root / root_pass
+
+
+
+
 docker exec -it web_container bash
 
 ## PostgreSQL
@@ -28,3 +34,13 @@ Web: Apache
 DB: MySQL
 Web: Nginx
 その他: Docker
+
+### 機能
+- DBからデータを取得して表示する
+- DBへデータの削除を行う
+- DBへ新規データ登録を行う
+- DBのデータを更新する
+- ログインを行う
+- セッション管理を行う
+- パスワードはハッシュ管理する(password_hash関数)
+- バリデーションチェックを行う
