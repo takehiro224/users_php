@@ -34,6 +34,14 @@
             </form>
         </div>
 
+        <?php if($errorMessage !== '') { ?>
+            <p class="error_message"><?php echo $errorMessage; ?></p>
+        <?php } ?>
+        <?php if($successMessage !== '') { ?>
+            <p class="success_message"><?php echo $successMessage; ?></p>
+        <?php } ?>
+
+
         <div id="page_area">
             <div id="page_count"><?php echo htmlspecialchars((string)$count); ?>件ヒットしました</div>
         </div>
