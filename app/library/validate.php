@@ -80,7 +80,7 @@ function validateDate(string $str): bool
     // 日付のフォーマットになっているか判定
     if(preg_match('/\A[0-9]{4}-[0-9]{2}-[0-9]{2}\z/', $str)) {
         list($year, $month, $day) = explode('-', $str);
-        if(checkdate((int)$year, (int)$month, (int)$day)) {
+        if(checkdate((int)$month, (int)$day, (int)$year)) {
             return true;
         }
         return false;
