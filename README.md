@@ -1,41 +1,7 @@
-admin / admin_pass
-root / root_pass
+# 概要
+データの一覧表示・登録・更新・削除のサンプルプログラムを作成
 
-
-
-
-docker exec -it web_container bash
-
-## PostgreSQL
-postgres: PostgreSQLの実行ファイルを指定しています。このコマンドを実行することでPostgreSQLサーバーが起動します。
--c log_destination=stderr: ログの出力先を標準エラー出力（stderr）に設定しています。これにより、PostgreSQLのログがコンテナの標準エラー出力に出力されるようになります。
--c log_statement=all: 実行されたSQLステートメントをログに記録する設定です。all はすべてのSQLステートメントをログに記録することを意味します。
--c log_connections=on: データベースへの接続をログに記録する設定です。on は接続のログ記録を有効にすることを意味します。
--c log_disconnections=on: データベースからの切断をログに記録する設定です。on は切断のログ記録を有効にすることを意味します。
-
-## memo
-### パターン1
-フロントエンド: PHP
-バックエンド: PHP
-DB: PostgreSQL
-Web: Apache
-その他: Docker
-
-### パターン2
-フロントエンド: PHP(Blade)
-バックエンド: PHP
-DB: PostgreSQL
-Web: Apache
-その他: Docker, Laravel
-
-### パターン3
-フロントエンド: ReactJS
-バックエンド: Go
-DB: MySQL
-Web: Nginx
-その他: Docker
-
-### 機能
+## 詳細
 - DBからデータを取得して表示する
 - DBへデータの削除を行う
 - DBへ新規データ登録を行う
@@ -44,3 +10,31 @@ Web: Nginx
 - セッション管理を行う
 - パスワードはハッシュ管理する(password_hash関数)
 - バリデーションチェックを行う
+
+## Webアプリ作成リスト
+
+|No.|対象| フロントエンド   | バックエンド | DB    | その他(FWなど) |
+|:-:| :---: | ------ | ---- | ------- | ------- |
+|1|○| PHP  | PHP   | PostgreSQL ||
+|2|| PHP(Blade) | PHP | PostgreSQL | Laravel |
+|3|| PHP | PHP | PostgreSQL | CakePHP |
+|4|| JavaScript  | PHP | MySQL | ReactJS, Laravel |
+|5|| JavaScript  | Golang | MySQL | ReactJS |
+|6|| TypeScript  | Golang | MySQL | ReactJS |
+|7|| TypeScript  | Java | MySQL | ReactJS |
+|8|| TypeScript  | Ruby | MySQL | ReactJS |
+|9|| TypeScript  | Python | MySQL | ReactJS |
+
+## その他技術要素
+- テストコード作成
+- Swagger作成
+- Docker利用
+- Kubernetes利用
+- Terraform利用
+- AWS上へ展開
+
+
+
+admin / admin_pass
+root / root_pass
+docker exec -it web_container bash
