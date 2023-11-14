@@ -19,8 +19,8 @@ function writeLog(string $message): void
         file_put_contents($fileName, '');
     } 
     $handle = fopen($fileName, "a");
-        fwrite($handle, $log);
-        fclose($handle);
+    fwrite($handle, $log);
+    fclose($handle);
     
 }
 
